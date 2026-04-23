@@ -1,0 +1,17 @@
+{
+  "name": "interior-by-dmi",
+  "version": "1.0.0",
+  "description": "Luxury interior design company in Nigeria",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./css/tailwind.css -o ./css/styles.css --minify",
+    "watch:css": "npx tailwindcss -i ./css/tailwind.css -o ./css/styles.css --watch"
+  },
+  "keywords": [
+    "interior",
+    "design",
+    "nigeria"
+  ],
+  "author": "",
+  "license": "ISC"
+}
