@@ -2,16 +2,22 @@
   "name": "interior-by-dmi",
   "version": "1.0.0",
   "description": "Luxury interior design company in Nigeria",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "build:css": "npx tailwindcss -i ./css/tailwind.css -o ./css/styles.css --minify",
-    "watch:css": "npx tailwindcss -i ./css/tailwind.css -o ./css/styles.css --watch"
+    "build": "npx tailwindcss -i ./tailwind.css -o ./css/styles.css --minify",
+    "watch": "npx tailwindcss -i ./tailwind.css -o ./css/styles.css --watch",
+    "dev": "npm run watch"
   },
   "keywords": [
     "interior",
     "design",
-    "nigeria"
+    "nigeria",
+    "luxury",
+    "lagos"
   ],
-  "author": "",
-  "license": "ISC"
+  "author": "Interior By DMI Ltd",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.0.0"
+  }
 }
