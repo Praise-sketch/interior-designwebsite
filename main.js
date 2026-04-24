@@ -1,9 +1,9 @@
 // Mobile menu toggle
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
 
-if (mobileMenuButton && mobileMenu) {
-  mobileMenuButton.addEventListener('click', () => {
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
 }
@@ -18,12 +18,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     
     if (targetElement) {
       window.scrollTo({
-        top: targetElement.offsetTop - 80, // Adjust for fixed header
+        top: targetElement.offsetTop - 100, // Adjust for fixed header
         behavior: 'smooth'
       });
       
       // Hide mobile menu if visible
-      if (!mobileMenu.classList.contains('hidden')) {
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.add('hidden');
       }
     }
@@ -32,7 +32,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', function(e) {
-  if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+  if (menuBtn && mobileMenu && !menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
     mobileMenu.classList.add('hidden');
   }
 });
+
+// Chat functionality
+function toggleChat() {
+  const chatBox = document.getElementById('chatBox');
+  if (chatBox) {
+    chatBox.classList.toggle('hidden');
+  }
+}
+
+function sendChat() {
+  const chatInput = document.getElementById('chatInput');
+  if (chatInput && chatInput.value.trim()) {
+    // Handle chat message (you can add backend integration here)
+    alert('Thanks for your message: ' + chatInput.value);
+    chatInput.value = '';
+  }
+}
+
+// Form submission
+const bookingForm = document.getElementById('bookingForm');
+if (bookingForm) {
+  bookingForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Collect form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Log or send to backend
+    console.log('Form submitted:', data);
+    alert('Thank you for your consultation request! We will get back to you within 24 hours.');
+    
+    // Reset form
+    this.reset();
+  });
+}
+
+// Make toggleChat and sendChat globally available
+window.toggleChat = toggleChat;
+window.sendChat = sendChat;
